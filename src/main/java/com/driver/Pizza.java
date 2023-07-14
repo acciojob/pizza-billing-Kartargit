@@ -13,8 +13,9 @@ public class Pizza {
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
         // your code goes here
-        totalPrice = 300;
-            setPrice(300);
+        if(isVeg)totalPrice = 300;
+        else totalPrice = 400;
+        setPrice(totalPrice);
     }
     public void setPrice(int price){
         this.price = price;
