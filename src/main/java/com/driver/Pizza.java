@@ -5,10 +5,14 @@ public class Pizza {
     private int price;
     private Boolean isVeg;
     private String bill;
-    static int extraCheese=0;
+    static int extraCheese= 80;
     static int extraTopping=0;
-    static int takeAway=0;
+    static int takeAway=20;
     static int totalPrice =0;
+    private static boolean isPaperAdded = false;
+    public boolean isCheese = false;
+    public boolean isTopping = false;
+
     static String bills = "";
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
@@ -26,24 +30,31 @@ public class Pizza {
 
     public void addExtraCheese(){
         // your code goes here
-        extraCheese = 80;
-//        totalPrice += 80;
+        if(isCheese==false){
+            isCheese = true;
+            totalPrice+=extraCheese;
+        }
 
     }
 
     public void addExtraToppings(){
         // your code goes here
-        if(getPrice()==300)extraTopping = 70;
-        else extraTopping =120;
-//        totalPrice += extraTopping;
+        if(isTopping==false){
+            if(getPrice()==300)extraTopping = 70;
+            else extraTopping =120;
+            isTopping = true;
+            totalPrice += extraTopping;
+        }
+
 
     }
 
     public void addTakeaway(){
         // your code goes here
-        takeAway = 20;
-//        totalPrice += takeAway;
-
+        if(isPaperAdded==false){
+            totalPrice += takeAway;
+            isPaperAdded = true;
+        }
     }
 
       static String base = "Base Price Of The Pizza: ";
@@ -55,10 +66,10 @@ public class Pizza {
 
     private void setBill(String bills) {
         bills = bills+base+getPrice()+"\n";
-       if(extraCheese>0) bills = bills+cheese+extraCheese+"\n";
-        if(extraTopping>0)bills = bills+topping+extraTopping+"\n";
-        if(takeAway>0)bills = bills+bag+takeAway+"\n";
-        totalPrice = totalPrice+extraTopping+extraCheese+takeAway;
+       if(isCheese) bills = bills+cheese+extraCheese+"\n";
+        if(isTopping)bills = bills+topping+extraTopping+"\n";
+        if(isPaperAdded)bills = bills+bag+takeAway+"\n";
+//        totalPrice = totalPrice+extraTopping+extraCheese+takeAway;
         this.bill = bills+total+totalPrice+"\n";
     }
 
