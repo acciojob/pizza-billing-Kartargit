@@ -26,22 +26,22 @@ public class Pizza {
     public void addExtraCheese(){
         // your code goes here
         extraCheese = 80;
-        totalPrice += 80;
+//        totalPrice += 80;
 
     }
 
     public void addExtraToppings(){
         // your code goes here
-        if(isVeg)extraTopping = 70;
+        if(getPrice()==300)extraTopping = 70;
         else extraTopping =120;
-        totalPrice += extraTopping;
+//        totalPrice += extraTopping;
 
     }
 
     public void addTakeaway(){
         // your code goes here
         takeAway = 20;
-        totalPrice += takeAway;
+//        totalPrice += takeAway;
 
     }
 
@@ -57,6 +57,7 @@ public class Pizza {
        if(extraCheese>0) bills = bills+cheese+extraCheese+"\n";
         if(extraTopping>0)bills = bills+topping+extraTopping+"\n";
         if(takeAway>0)bills = bills+bag+takeAway+"\n";
+        totalPrice = totalPrice+extraTopping+extraCheese+takeAway;
         this.bill = bills+total+totalPrice+"\n";
     }
 
